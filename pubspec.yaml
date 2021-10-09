@@ -1,7 +1,8 @@
 name: simple_image_picker
-description: A new Flutter package project.
+description: Selecting image from Camera/Gallery on Android/iOS.
 version: 0.0.1
-homepage: https
+homepage: https://github.com/musahinist/simple_image_picker.git
+repository: https://github.com/musahinist/simple_image_picker.git
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

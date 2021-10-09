@@ -480,7 +480,7 @@ class DisplayPictureScreen extends StatelessWidget {
             child: IconButton(
               icon: Row(
                 children: [
-                  Icon(Icons.delete, color: Colors.red),
+                  const Icon(Icons.delete, color: Colors.red),
                 ],
               ),
               onPressed: onDelete,
