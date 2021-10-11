@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
-import 'widgets/camera_picker.dart';
+import 'src/camera_picker.dart';
 
 export 'image_picker.dart';
 
