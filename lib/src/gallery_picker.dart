@@ -7,7 +7,7 @@ import 'package:photo_manager/photo_manager.dart';
 
 class GalleryPicker extends StatefulWidget {
   final ValueSetter<XFile> onSelect;
-  GalleryPicker({Key? key, required this.onSelect}) : super(key: key);
+  const GalleryPicker({Key? key, required this.onSelect}) : super(key: key);
 
   @override
   _GalleryPickerState createState() => _GalleryPickerState();
@@ -33,21 +33,21 @@ class _GalleryPickerState extends State<GalleryPicker> {
 
   _fetchNewMedia() async {
     lastPage = currentPage;
-    var result = await PhotoManager.requestPermission();
-    if (result) {
+    var result = await PhotoManager.requestPermissionExtend();
+    if (result == PermissionState.authorized) {
       // success
 //load the album list
       List<AssetPathEntity> albums =
           await PhotoManager.getAssetPathList(onlyAll: true);
       print(albums.first.name);
       List<AssetEntity> media =
-          await albums[0].getAssetListPaged(currentPage, 60);
+          await albums[0].getAssetListPaged(page: currentPage, size: 20);
       print(media);
       List<Widget> temp = [];
       for (var asset in media) {
         temp.add(
           FutureBuilder<Uint8List?>(
-            future: asset.thumbDataWithSize(200, 200),
+            future: asset.thumbnailDataWithSize(ThumbnailSize(200, 200)),
             builder: (BuildContext context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done)
                 return Stack(
